@@ -6,7 +6,7 @@ LABEL       com.github.containers.toolbox="true" \
             maintainer="dnkmm"
 
 RUN	      pacman -Syu --noconfirm
-RUN         pacman -S go gopls python
+RUN         pacman -S go gopls python --noconfirm
 
 RUN   	useradd -m --shell=/bin/bash yay && usermod -L yay && \
       	echo "yay ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
