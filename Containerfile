@@ -1,20 +1,22 @@
-FROM quay.io/toolbx-images/alpine-toolbox:edge
+FROM        ghcr.io/dnkmmr69420/enhanced-arch:latest
 
-LABEL com.github.containers.toolbox="true" \
-      usage="This image is meant to be used with the toolbox or distrobox command" \
-      summary="A cloud-native terminal experience" \
-      maintainer="jorge.castro@gmail.com"
+LABEL       com.github.containers.toolbox="true" \
+            usage="This image is used for vscodium" \
+            summary="vscodium preinstalled on an arch linux docker image" \
+            maintainer="dnkmm"
 
-COPY extra-packages /
-RUN apk update && \
-    apk upgrade && \
-    grep -v '^#' /extra-packages | xargs apk add
-RUN rm /extra-packages
+RUN	      pacman -Syu --noconfirm
+RUN         pacman -S go gopls python
 
-RUN   ln -fs /bin/sh /usr/bin/sh && \
-      ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker && \
-      ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \ 
-      ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/podman && \
-      ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/rpm-ostree && \
-      ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/transactional-update
-     
+RUN   	useradd -m --shell=/bin/bash yay && usermod -L yay && \
+      	echo "yay ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+      	echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+USER	      yay
+WORKDIR	/home/yay
+
+RUN		yay -Syu --noconfirm
+RUN		yay -S vscodium-bin --noconfirm
+
+USER 	      root
+WORKDIR     /
