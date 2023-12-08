@@ -7,7 +7,7 @@ This container image has [vscodium](https://vscodium.com) preinstalled on it wit
 ### Distrobox
 
 ```bash
-distrobox create -i ghcr.io/dnkmmr69420/vscodium-arch:latest -n codium
+distrobox create -i ghcr.io/dnkmmr69420/codium:latest -n codium
 ```
 
 To enter type
@@ -19,7 +19,7 @@ distrobox enter codium
 ### Toolbx
 
 ```bash
-toolbox create -i ghcr.io/dnkmmr69420/vscodium-arch:latest -c codium
+toolbox create -i ghcr.io/dnkmmr69420/codium:latest -c codium
 ```
 
 To enter type
