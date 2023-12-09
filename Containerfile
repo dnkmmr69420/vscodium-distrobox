@@ -3,7 +3,7 @@ FROM        ghcr.io/dnkmmr69420/enhanced-arch:latest
 LABEL       com.github.containers.toolbox="true" \
             usage="This image is used for vscodium" \
             summary="vscodium preinstalled on an arch linux docker image" \
-            maintainer="dnkmm"
+            maintainer="dnkmmr"
 
 RUN	pacman -Syu --noconfirm
 RUN         pacman -S go gopls python npm --noconfirm
