@@ -13,7 +13,7 @@ distrobox create -i ghcr.io/dnkmmr69420/codium:latest -n codium
 Custom home if you don't want `~/` to be cluttered
 
 ```bash
-distrobox create -i ghcr.io/dnkmmr69420/codium:latest -n codium -H codium
+distrobox create -i ghcr.io/dnkmmr69420/codium:latest -n codium -H ~/codium
 ```
 
 To enter type
