@@ -10,6 +10,12 @@ This container image has [vscodium](https://vscodium.com) preinstalled on it wit
 distrobox create -i ghcr.io/dnkmmr69420/codium:latest -n codium
 ```
 
+Custom home if you don't want `~/` to be cluttered
+
+```bash
+distrobox create -i ghcr.io/dnkmmr69420/codium:latest -n codium -H codium
+```
+
 To enter type
 
 ```bash
