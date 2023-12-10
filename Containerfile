@@ -6,7 +6,7 @@ LABEL       com.github.containers.toolbox="true" \
             maintainer="dnkmmr"
 
 RUN	pacman -Syu --noconfirm
-RUN         pacman -S go gopls python npm ninja cmake pyenv --noconfirm
+RUN         pacman -S go gopls python npm ninja cmake pyenv buildah --noconfirm
 
 RUN   	useradd -m --shell=/bin/bash yay && usermod -L yay && \
       	echo "yay ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
