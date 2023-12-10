@@ -6,7 +6,7 @@ LABEL       com.github.containers.toolbox="true" \
             maintainer="dnkmmr"
 
 RUN	pacman -Syu --noconfirm
-RUN         pacman -S go gopls python npm --noconfirm
+RUN         pacman -S go gopls python npm ninja cmake pyenv --noconfirm
 
 RUN   	useradd -m --shell=/bin/bash yay && usermod -L yay && \
       	echo "yay ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
@@ -16,6 +16,7 @@ USER	yay
 WORKDIR	/home/yay
 
 RUN	yay -Syu --noconfirm
+RUN	yay -S nvm --noconfirm
 RUN	yay -S vscodium-bin --noconfirm
 
 USER 	root
