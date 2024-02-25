@@ -1,4 +1,4 @@
-FROM        ghcr.io/dnkmmr69420/enhanced-arch:latest
+FROM        ghcr.io/ublue-os/arch-distrobox
 
 LABEL       com.github.containers.toolbox="true" \
             usage="This image is used for vscodium" \
@@ -8,16 +8,16 @@ LABEL       com.github.containers.toolbox="true" \
 RUN	pacman -Syu --noconfirm
 RUN         pacman -S go gopls python npm ninja cmake pyenv buildah meson --noconfirm
 
-RUN   	useradd -m --shell=/bin/bash yay && usermod -L yay && \
-      	echo "yay ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-      	echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN         useradd -m --shell=/bin/bash build && usermod -L build && \
+            echo "build ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+            echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-USER	yay
-WORKDIR	/home/yay
+USER        build
+WORKDIR     /home/build
 
-RUN	yay -Syu --noconfirm
-RUN	yay -S nvm --noconfirm
-RUN	yay -S vscodium-bin --noconfirm
+RUN	paru -Syu --noconfirm
+RUN	paru -S nvm --noconfirm
+RUN	paru -S vscodium-bin --noconfirm
 
 USER 	root
 WORKDIR     /
