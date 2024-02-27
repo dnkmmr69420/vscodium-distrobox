@@ -16,7 +16,7 @@ USER        build
 WORKDIR     /home/build
 
 RUN	paru -Syu --noconfirm
-RUN	paru -S nvm --noconfirm
+RUN	paru -S nvm patchelf --noconfirm
 RUN	paru -S vscodium-bin --noconfirm
 
 USER 	root
